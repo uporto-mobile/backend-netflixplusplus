@@ -83,3 +83,4 @@ replay_pid*
 *.hprof
 
 # End of https://www.toptal.com/developers/gitignore/api/java,gradle
+.env
