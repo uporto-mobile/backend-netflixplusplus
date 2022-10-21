@@ -2,10 +2,11 @@ package com.lmr.backendnetflixplusplus.services;
 
 import com.lmr.backendnetflixplusplus.models.MovieCatalogModel;
 import com.lmr.backendnetflixplusplus.repositories.MovieCatalogRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -23,14 +24,15 @@ public class MovieCatalogService {
         return movieCatalogRepository.save(movieCatalogModel);
     }
 
-    public List<MovieCatalogModel> findAll() {
-        return movieCatalogRepository.findAll();
+    public Page<MovieCatalogModel> findAll(Pageable pageable) {
+        return movieCatalogRepository.findAll(pageable);
     }
 
     public Optional<MovieCatalogModel> findById(UUID id) {
         return movieCatalogRepository.findById(id);
     }
 
+    @Transactional
     public void delete(MovieCatalogModel movieCatalogModel) {
         movieCatalogRepository.delete(movieCatalogModel);
     }
